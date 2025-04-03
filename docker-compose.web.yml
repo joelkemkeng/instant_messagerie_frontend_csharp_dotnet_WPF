@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  hetic-stream:
+    # Configuration spéciale pour le mode web
+    environment:
+      - ASPNETCORE_URLS=http://+:5000
+      - ASPNETCORE_ENVIRONMENT=Production
+      - WEB_MODE=true
+    ports:
+      - "5000:5000"
+    # Utiliser nginx comme proxy pour servir l'application
+  
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - hetic-stream

@@ -102,8 +102,24 @@ docker-compose -f docker-compose.yml -f docker-compose.gui.yml up -d
 ```
 
 Vous pouvez également utiliser les scripts prêts à l'emploi :
-- `scripts/run_gui_linux.sh` pour Linux
-- `scripts/run_gui_windows.bat` pour Windows
+- `scripts/run_gui_linux.sh` pour Linux (mode GUI)
+- `scripts/run_gui_windows.bat` pour Windows (mode GUI)
+- `scripts/run_web.sh` pour Linux (mode Web avec Nginx)
+- `scripts/run_web.bat` pour Windows (mode Web avec Nginx)
+
+#### Mode Web (Accès via navigateur)
+
+Pour accéder à l'application via un navigateur web :
+
+```bash
+# Démarrer avec le proxy Nginx
+docker-compose -f docker-compose.yml -f docker-compose.web.yml up -d
+
+# Ouvrez votre navigateur à l'adresse
+http://localhost
+```
+
+Note : Le mode web utilise un proxy Nginx pour exposer l'application sur le port 80.
 
 ### Web (WebAssembly)
 
