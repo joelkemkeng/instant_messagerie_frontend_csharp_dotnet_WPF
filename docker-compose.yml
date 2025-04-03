@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  hetic-stream:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hetic-stream
+    environment:
+      - ApiBaseUrl=https://api.heticstream.com
+      - ApiEnabled=false
+      - EndpointLogin=/auth/login
+      - EndpointRegister=/auth/register
+      - EndpointChannels=/channels
+      - EndpointMessages=/messages
+      - ImageAssetsPath=Assets/Images
+      - LightThemeEnabled=false
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    # Limit container resources to improve stability
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+    labels:
+      - "com.heticstream.app=messaging"
+      - "com.heticstream.version=1.0"
+      - "com.heticstream.description=Chat application built with Avalonia UI"

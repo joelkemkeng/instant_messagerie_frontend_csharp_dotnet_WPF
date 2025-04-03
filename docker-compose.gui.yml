@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  hetic-stream:
+    # Remplacer le point d'entrée pour désactiver le mode headless
+    entrypoint: ["dotnet", "HeticStream.UI.dll"]
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      - LIBGL_ALWAYS_INDIRECT=0
+      - HEADLESS=false
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ${XAUTHORITY:-~/.Xauthority}:/root/.Xauthority
+    # Pour les systèmes avec SELinux activé (comme Fedora, CentOS, RHEL)
+    security_opt:
+      - label=type:container_runtime_t
+    # Assure la compatibilité avec DRI (Direct Rendering Infrastructure)
+    devices:
+      - /dev/dri:/dev/dri

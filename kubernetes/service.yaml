@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hetic-stream
+  labels:
+    app: hetic-stream
+spec:
+  selector:
+    app: hetic-stream
+  ports:
+  - port: 80
+    targetPort: 5000
+    protocol: TCP
+    name: http
+  type: LoadBalancer
