@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hetic-stream
+  labels:
+    app: hetic-stream
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hetic-stream
+  template:
+    metadata:
+      labels:
+        app: hetic-stream
+    spec:
+      containers:
+      - name: hetic-stream
+        image: your-registry/hetic-stream:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+          name: http
+        env:
+        - name: ApiBaseUrl
+          value: "https://api.heticstream.com"
+        - name: ApiEnabled
+          value: "true"
+        - name: EndpointLogin
+          value: "/auth/login"
+        - name: EndpointRegister
+          value: "/auth/register"
+        - name: EndpointChannels
+          value: "/channels"
+        - name: EndpointMessages
+          value: "/messages"
+        - name: ImageAssetsPath
+          value: "Assets/Images"
+        - name: LightThemeEnabled
+          value: "false"
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+          requests:
+            cpu: "0.2"
+            memory: "256Mi"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - name: logs-volume
+          mountPath: /app/logs
+      volumes:
+      - name: logs-volume
+        emptyDir: {}

@@ -1,0 +1,27 @@
+# Dossiers à ignorer
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+**/.vscode/
+**/.idea/
+
+# Fichiers générés
+*.user
+*.userosscache
+*.suo
+*.userprefs
+.DS_Store
+
+# Dossiers Git
+.git/
+.github/
+
+# Fichiers de documentation
+*.md
+LICENSE
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose*.yml

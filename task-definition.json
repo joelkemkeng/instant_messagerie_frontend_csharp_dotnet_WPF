@@ -1,0 +1,40 @@
+{
+  "family": "hetic-stream",
+  "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "hetic-stream",
+      "image": "ACCOUNT_ID.dkr.ecr.REGION.amazonaws.com/hetic-stream:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "hostPort": 5000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        { "name": "ApiBaseUrl", "value": "https://api.heticstream.com" },
+        { "name": "ApiEnabled", "value": "true" },
+        { "name": "EndpointLogin", "value": "/auth/login" },
+        { "name": "EndpointRegister", "value": "/auth/register" },
+        { "name": "EndpointChannels", "value": "/channels" },
+        { "name": "EndpointMessages", "value": "/messages" },
+        { "name": "ImageAssetsPath", "value": "Assets/Images" },
+        { "name": "LightThemeEnabled", "value": "false" }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/hetic-stream",
+          "awslogs-region": "REGION",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512"
+}

@@ -1,0 +1,54 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=netstandard">
+    
+    <!-- Common measurements -->
+    <system:Double x:Key="StandardMargin">10</system:Double>
+    <system:Double x:Key="StandardPadding">10</system:Double>
+    <system:Double x:Key="StandardCornerRadius">4</system:Double>
+    
+    <!-- Font sizes -->
+    <system:Double x:Key="HeadingFontSize">24</system:Double>
+    <system:Double x:Key="SubheadingFontSize">18</system:Double>
+    <system:Double x:Key="BodyFontSize">14</system:Double>
+    <system:Double x:Key="CaptionFontSize">12</system:Double>
+    
+    <!-- Modal Settings -->
+    <system:Double x:Key="ModalWidth">400</system:Double>
+    <system:Double x:Key="ModalHeight">200</system:Double>
+    <system:Double x:Key="ModalMinHeight">150</system:Double>
+    
+    <!-- Transitions -->
+    <system:TimeSpan x:Key="StandardTransitionDuration">0:0:0.15</system:TimeSpan>
+    
+    <!-- Dark Theme Resources -->
+    <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+            <Color x:Key="BackgroundColor">#1E1E1E</Color>
+            <Color x:Key="SidebarColor">#2D2D2D</Color>
+            <Color x:Key="AccentColor">#7289DA</Color>
+            <Color x:Key="TextColor">#FFFFFF</Color>
+            <Color x:Key="SecondaryTextColor">#B9BBBE</Color>
+            <Color x:Key="BorderColor">#3A3A3A</Color>
+            <Color x:Key="HighlightColor">#3C3F45</Color>
+            <Color x:Key="InputBackgroundColor">#2F3136</Color>
+            <Color x:Key="SuccessColor">#43B581</Color>
+            <Color x:Key="ErrorColor">#F04747</Color>
+            <Color x:Key="WarningColor">#FAA61A</Color>
+        </ResourceDictionary>
+        
+        <ResourceDictionary x:Key="Light">
+            <Color x:Key="BackgroundColor">#FFFFFF</Color>
+            <Color x:Key="SidebarColor">#F2F2F2</Color>
+            <Color x:Key="AccentColor">#7289DA</Color>
+            <Color x:Key="TextColor">#2E3338</Color>
+            <Color x:Key="SecondaryTextColor">#747F8D</Color>
+            <Color x:Key="BorderColor">#DBDBDB</Color>
+            <Color x:Key="HighlightColor">#F6F6F7</Color>
+            <Color x:Key="InputBackgroundColor">#EBEDEF</Color>
+            <Color x:Key="SuccessColor">#43B581</Color>
+            <Color x:Key="ErrorColor">#F04747</Color>
+            <Color x:Key="WarningColor">#FAA61A</Color>
+        </ResourceDictionary>
+    </ResourceDictionary.ThemeDictionaries>
+</ResourceDictionary>

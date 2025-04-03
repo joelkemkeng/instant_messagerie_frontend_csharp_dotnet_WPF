@@ -1,0 +1,61 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:HeticStream.UI.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="150"
+        x:Class="HeticStream.UI.Views.NotificationView"
+        x:DataType="viewModels:NotificationViewModel"
+        Title="Notification"
+        Width="400" SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        SystemDecorations="None"
+        Background="Transparent"
+        Opacity="0.9"
+        CanResize="False">
+        
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+    </Window.Styles>
+
+    <Border Background="{Binding BackgroundBrush, Mode=OneWay}"
+            CornerRadius="5"
+            BoxShadow="0 4 30 #40000000">
+        <Grid RowDefinitions="Auto,*" Margin="20">
+            <!-- Header -->
+            <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto">
+                <TextBlock Grid.Column="0" 
+                           Text="{Binding Icon}"
+                           FontSize="24"
+                           Margin="0,0,15,0"
+                           VerticalAlignment="Center" />
+                            
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding Title}"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center" />
+                            
+                <Button Grid.Column="2" 
+                        Command="{Binding CloseCommand}"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Padding="5"
+                        Content="✕"
+                        Click="CloseButton_Click" />
+            </Grid>
+            
+            <!-- Message Content -->
+            <TextBlock Grid.Row="1" 
+                       Text="{Binding Message}"
+                       TextWrapping="Wrap"
+                       Margin="0,15,0,5" />
+        </Grid>
+    </Border>
+</Window>
