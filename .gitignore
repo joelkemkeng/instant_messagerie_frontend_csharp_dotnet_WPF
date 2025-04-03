@@ -56,8 +56,8 @@ ScaffoldingReadMe.txt
 *.nuget.props
 *.nuget.targets
 
-# Avalonia preview files
-**/*.axaml.cs
+# Ne plus exclure les fichiers .axaml.cs car ils sont nécessaires pour la compilation
+# **/*.axaml.cs
 
 # MSBuild Binary and Structured Log
 *.binlog
