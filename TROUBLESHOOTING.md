@@ -81,10 +81,37 @@ Pour accéder via le navigateur web :
 scripts\run_web.bat
 ```
 
+## Problème : SDK .NET 7.0 requis mais non installé
+
+Si vous rencontrez cette erreur :
+```
+Requested SDK version: 7.0.100
+global.json file: ...
+Installed SDKs:
+9.0.100 [C:\Program Files\dotnet\sdk]
+```
+
+### Solution : Utiliser le SDK installé
+
+Exécutez le script qui supprime la restriction de version du SDK :
+
+#### Windows
+```
+scripts\use_installed_sdk.bat
+```
+
+#### Linux/macOS
+```
+./scripts/use_installed_sdk.sh
+```
+
+Cela supprimera la restriction imposée par le fichier `global.json` et vous permettra d'utiliser le SDK .NET installé sur votre système (9.0.100).
+
+### Alternative : Installer le SDK .NET 7.0
+
+Si vous préférez installer le SDK 7.0 :
+- Téléchargez et installez le SDK .NET 7.0 depuis [la page des téléchargements .NET](https://dotnet.microsoft.com/download/dotnet/7.0)
+
 ## Problème : Avertissement sur la version obsolète de .NET 7.0
 
 Vous pouvez ignorer cet avertissement si vous souhaitez continuer à utiliser .NET 7.0. Il n'empêche pas la compilation.
-
-Si vous souhaitez supprimer l'avertissement, vous pouvez installer le SDK .NET 7.0 plutôt que d'utiliser .NET 9.0 :
-- Téléchargez et installez le SDK .NET 7.0 depuis [la page des téléchargements .NET](https://dotnet.microsoft.com/download/dotnet/7.0)
-- Utilisez le fichier `global.json` pour forcer l'utilisation du SDK 7.0
